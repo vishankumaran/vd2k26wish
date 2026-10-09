@@ -25,54 +25,130 @@
 
   <main>
 
-    <!-- SLIDE 1: TWO BROKEN HEARTS -->
-    <section class="slide slide-one" id="slide1">
-      <div class="slide-content">
-        <p class="eyebrow">TWO STRANGERS · ONE STORY</p>
+   ```css
+/* SLIDE 1: ONE BROKEN HEART — BLACK LEFT, GLOWING PINK RIGHT */
 
-        <h1>
-          Even broken hearts<br>
-          <span>can find each other.</span>
-        </h1>
+.heart-meeting {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  max-width: 520px;
+  margin: 15px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 800px;
+}
 
-        <p class="subtitle">
-          Somewhere between two strangers, our story began.
-        </p>
+/* Hide the old CSS heart pieces if they remain in the HTML */
+.heart-meeting .broken-heart {
+  display: none;
+}
 
-        <div class="heart-meeting" id="heartMeeting">
-          <div class="broken-heart heart-left">
-            <span class="heart-shine"></span>
-            <span class="heart-crack"></span>
-          </div>
+/* The new single heart graphic */
+.broken-heart-art {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: min(260px, 72vw);
+  height: auto;
+  overflow: visible;
+  transform-origin: center;
+  filter: drop-shadow(0 0 12px #ff2c8877);
+  animation: brokenHeartBeat 1.8s ease-in-out infinite;
+}
 
-          <div class="heart-join">♥</div>
+/* Left half: nearly black */
+.broken-heart-art .heart-left-half {
+  fill: #050505;
+  stroke: #30202d;
+  stroke-width: 2px;
+  filter: drop-shadow(0 0 5px #000);
+  transition: fill .6s ease, filter .6s ease;
+}
 
-          <div class="broken-heart heart-right">
-            <span class="heart-shine"></span>
-            <span class="heart-crack"></span>
-          </div>
-        </div>
+/* Right half: bright pink */
+.broken-heart-art .heart-right-half {
+  fill: url(#pinkHeart);
+  filter: drop-shadow(0 0 10px #ff1680)
+          drop-shadow(0 0 22px #ff168077);
+  transition: filter .6s ease;
+}
 
-        <p class="heart-caption" id="heartCaption">
-          Two hearts, slowly finding their way home.
-        </p>
+/* Visible zigzag crack between the two sides */
+.broken-heart-art path:last-child {
+  fill: none;
+  stroke: #fff0f7;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 4px #ffb8dc);
+}
 
-        <button class="love-button" id="meetHeartsBtn">
-          Let our hearts meet <span>♥</span>
-        </button>
+/* Heart gently beats */
+@keyframes brokenHeartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
 
-        <button class="text-button" id="toLockBtn" hidden>
-          Continue our story ↓
-        </button>
-      </div>
+  50% {
+    transform: scale(1.045);
+  }
+}
 
-      <div class="scroll-hint">
-        <span>OUR STORY STARTS HERE</span>
-        <span class="down-arrow">↓</span>
-      </div>
-    </section>
+/* Caption below the heart */
+.heart-caption {
+  color: #ffd3e6;
+  min-height: 25px;
+  margin: 3px 0 18px;
+  text-align: center;
+}
 
+/* Hide the old joining heart symbol */
+.heart-join {
+  display: none;
+}
 
+/* Optional merge animation when the button is clicked */
+.heart-meeting.merged .broken-heart-art {
+  animation: heartMerge 1s ease forwards;
+  filter: drop-shadow(0 0 20px #ff58a9)
+          drop-shadow(0 0 40px #ff3c9a);
+}
+
+@keyframes heartMerge {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    transform: scale(1.04);
+  }
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  .heart-meeting {
+    height: 230px;
+  }
+
+  .broken-heart-art {
+    width: min(230px, 76vw);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .broken-heart-art,
+  .heart-meeting.merged .broken-heart-art {
+    animation: none;
+  }
+}
+```
     <!-- SLIDE 2: SECRET CODE -->
     <section class="slide slide-two" id="slide2">
       <div class="slide-content lock-content">
