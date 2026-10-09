@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,343 +9,269 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
-
 <body>
   <div class="background-glow"></div>
-  <div class="sparkle-layer" id="sparkles" aria-hidden="true"></div>
-
-  <header class="top-label">
-    <span>MADE WITH LOVE</span>
-    <span>♥</span>
-  </header>
+  <div id="sparkles" class="sparkles" aria-hidden="true"></div>
 
   <main>
-
-    <!-- SLIDE 1: BROKEN HEART -->
-    <section class="slide slide-one" id="slide1">
-      <div class="slide-content">
+    <!-- PAGE 1: BROKEN HEART -->
+    <section class="page active" id="page1">
+      <div class="page-content">
         <p class="eyebrow">TWO STRANGERS · ONE STORY</p>
 
-        <h1>
-          Even broken hearts<br>
-          <span>can find each other.</span>
-        </h1>
+        <h1>Even broken hearts<br><span>can find each other.</span></h1>
 
         <p class="subtitle">
           Somewhere between two strangers, our story began.
         </p>
 
-        <div class="heart-meeting" id="heartMeeting">
-          <svg class="broken-heart-art" viewBox="0 0 240 220"
-               role="img"
-               aria-label="A broken heart with a black left half and glowing pink right half">
+        <div class="heart-wrap">
+          <svg class="broken-heart" viewBox="0 0 240 220"
+               role="img" aria-label="A black and pink broken heart">
             <defs>
               <linearGradient id="pinkHeart" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ff9cc9"/>
-                <stop offset="45%" stop-color="#ff2789"/>
-                <stop offset="100%" stop-color="#b80050"/>
+                <stop offset="0%" stop-color="#ff9bc7"/>
+                <stop offset="45%" stop-color="#ff2388"/>
+                <stop offset="100%" stop-color="#bd0757"/>
               </linearGradient>
-              <filter id="pinkGlow" x="-60%" y="-60%" width="220%" height="220%">
-                <feGaussianBlur stdDeviation="7" result="blur"/>
+              <filter id="heartGlow" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="8" result="blur"/>
                 <feMerge>
                   <feMergeNode in="blur"/>
                   <feMergeNode in="SourceGraphic"/>
                 </feMerge>
               </filter>
+              <clipPath id="heartClip">
+                <path d="M120 202
+                  L26 109
+                  C-7 75 9 25 49 17
+                  C79 11 104 29 120 52
+                  C137 29 161 11 192 17
+                  C232 25 247 75 214 109 Z"/>
+              </clipPath>
             </defs>
 
-            <!-- Black left half -->
-            <path class="heart-left-half"
-              d="M120 198 L27 105
-                 C-9 64 14 19 54 19
-                 C83 19 105 38 120 62
-                 L106 82 L124 101 L105 121 L120 143 Z"/>
+            <g clip-path="url(#heartClip)" filter="url(#heartGlow)">
+              <rect x="0" y="0" width="120" height="220" fill="#030305"/>
+              <rect x="120" y="0" width="120" height="220" fill="url(#pinkHeart)"/>
+            </g>
 
-            <!-- Glowing pink right half -->
-            <path class="heart-right-half"
-              d="M120 198 L213 105
-                 C249 64 226 19 186 19
-                 C157 19 135 38 120 62
-                 L136 82 L119 101 L140 121 L120 143 Z"
-              fill="url(#pinkHeart)" filter="url(#pinkGlow)"/>
-
-            <!-- Broken lightning crack -->
-            <path class="heart-crack-line"
-              d="M120 62 L136 82 L119 101 L140 121 L120 143"/>
+            <path class="heart-crack"
+              d="M119 53 L105 78 L128 94 L108 116 L132 137 L119 155"/>
           </svg>
         </div>
 
-        <p class="heart-caption" id="heartCaption">
-          Two hearts, slowly finding their way home. ❤️
+        <p class="heart-caption">
+          Even a broken heart can glow again when it finds the right person. 💗
         </p>
 
-        <button class="love-button" id="meetHeartsBtn" type="button">
-          Let our hearts meet <span>♥</span>
-        </button>
-
-        <button class="text-button" id="toLockBtn" type="button" hidden>
-          Continue our story ↓
+        <button class="love-button" id="startButton" type="button">
+          Our story begins ♥
         </button>
       </div>
-
-      <div class="scroll-hint">
-        <span>OUR STORY STARTS HERE</span>
-        <span class="down-arrow">↓</span>
-      </div>
+      <p class="page-number">01 / 04</p>
     </section>
 
 
-    <!-- SLIDE 2: PASSWORD -->
-    <section class="slide slide-two locked" id="slide2">
-      <div class="slide-content lock-content">
+    <!-- PAGE 2: PASSWORD -->
+    <section class="page" id="page2" hidden>
+      <div class="page-content lock-content">
         <div class="lock-icon">🔐</div>
         <p class="eyebrow">A LITTLE SECRET</p>
 
-        <h2>Only you can<br><span>unlock my heart.</span></h2>
+        <h2>Only you can<br><span>unlock this.</span></h2>
 
         <p class="subtitle">
-          There is a little secret between us.<br>
-          Enter our special code to continue.
+          Some memories have a little secret. Enter our special code to continue.
         </p>
 
         <form id="unlockForm" class="unlock-form">
           <label for="secretCode">Our secret code</label>
-          <input id="secretCode" name="secretCode"
-                 type="password" placeholder="Enter the code"
-                 autocomplete="off" required>
-
-          <button class="love-button" type="submit">
-            Unlock the memories ♥
-          </button>
-
+          <input
+            id="secretCode"
+            name="secretCode"
+            type="password"
+            placeholder="Enter the secret code"
+            autocomplete="off"
+            required
+          >
+          <button class="love-button" type="submit">Unlock our memories ❤️</button>
           <p id="codeMessage" class="form-message" aria-live="polite"></p>
         </form>
 
-        <p class="tiny-note">A little date. A big feeling. ❤️</p>
+        <p class="tiny-note">A little secret from one heart to another. 💌</p>
+        <button class="text-button" id="backTo1" type="button">← Go back</button>
       </div>
+      <p class="page-number">02 / 04</p>
     </section>
 
 
-    <!-- SLIDE 3: PHOTO HEART BALLOONS -->
-    <section class="slide slide-three locked" id="slide3">
-      <div class="slide-content photos-content">
-        <p class="eyebrow">OUR LITTLE COLLECTION</p>
-
-        <h2>Memories that<br><span>make me smile.</span></h2>
-
+    <!-- PAGE 3: PHOTO BALLOONS -->
+    <section class="page" id="page3" hidden>
+      <div class="page-content photos-content">
+        <p class="eyebrow">LITTLE MOMENTS · BIG FEELINGS</p>
+        <h2>Our memories,<br><span>wrapped in love.</span></h2>
         <p class="subtitle">
-          Touch a floating heart balloon to reveal a memory. ❤️
+          Touch each floating heart to uncover a memory. 🎈
         </p>
 
         <div class="balloon-field">
-
-          <button class="photo-balloon balloon-one" data-photo="0"
-                  type="button" aria-label="Reveal memory one">
+          <button class="photo-balloon" type="button" data-photo="0" aria-label="Reveal memory one">
             <span class="balloon-heart">
               <img src="images/memory1.jpg.jpg" alt="Memory one">
-              <span class="balloon-question">♥</span>
+              <span class="balloon-question">?</span>
             </span>
-            <span class="balloon-knot"></span>
-            <span class="balloon-string"></span>
-            <span class="balloon-label">Memory One</span>
+            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-label">Memory 1</span>
           </button>
 
-          <button class="photo-balloon balloon-two" data-photo="1"
-                  type="button" aria-label="Reveal memory two">
+          <button class="photo-balloon" type="button" data-photo="1" aria-label="Reveal memory two">
             <span class="balloon-heart">
               <img src="images/memory2.jpg.jpg" alt="Memory two">
-              <span class="balloon-question">♥</span>
+              <span class="balloon-question">?</span>
             </span>
-            <span class="balloon-knot"></span>
-            <span class="balloon-string"></span>
-            <span class="balloon-label">Memory Two</span>
+            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-label">Memory 2</span>
           </button>
 
-          <button class="photo-balloon balloon-three" data-photo="2"
-                  type="button" aria-label="Reveal memory three">
+          <button class="photo-balloon" type="button" data-photo="2" aria-label="Reveal memory three">
             <span class="balloon-heart">
               <img src="images/memory3.jpg.jpg" alt="Memory three">
-              <span class="balloon-question">♥</span>
+              <span class="balloon-question">?</span>
             </span>
-            <span class="balloon-knot"></span>
-            <span class="balloon-string"></span>
-            <span class="balloon-label">Memory Three</span>
+            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-label">Memory 3</span>
           </button>
 
-          <button class="photo-balloon balloon-four" data-photo="3"
-                  type="button" aria-label="Reveal memory four">
+          <button class="photo-balloon" type="button" data-photo="3" aria-label="Reveal memory four">
             <span class="balloon-heart">
               <img src="images/memory4.jpg.jpg" alt="Memory four">
-              <span class="balloon-question">♥</span>
+              <span class="balloon-question">?</span>
             </span>
-            <span class="balloon-knot"></span>
-            <span class="balloon-string"></span>
-            <span class="balloon-label">Memory Four</span>
+            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-label">Memory 4</span>
           </button>
 
-          <button class="photo-balloon balloon-five" data-photo="4"
-                  type="button" aria-label="Reveal memory five">
+          <button class="photo-balloon" type="button" data-photo="4" aria-label="Reveal memory five">
             <span class="balloon-heart">
               <img src="images/memory5.jpg.jpg" alt="Memory five">
-              <span class="balloon-question">♥</span>
+              <span class="balloon-question">?</span>
             </span>
-            <span class="balloon-knot"></span>
-            <span class="balloon-string"></span>
-            <span class="balloon-label">Memory Five</span>
+            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-label">Memory 5</span>
           </button>
 
-          <button class="photo-balloon balloon-six" data-photo="5"
-                  type="button" aria-label="Reveal special memory">
+          <button class="photo-balloon" type="button" data-photo="5" aria-label="Reveal the special memory">
             <span class="balloon-heart">
               <img src="images/special.jpg.jpg" alt="Special memory">
-              <span class="balloon-question">♥</span>
+              <span class="balloon-question">?</span>
             </span>
-            <span class="balloon-knot"></span>
-            <span class="balloon-string"></span>
-            <span class="balloon-label">Special Memory</span>
+            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-label">Special ❤️</span>
           </button>
 
-          <button class="photo-balloon balloon-seven" data-photo="6"
-                  type="button" aria-label="Reveal memory seven">
+          <button class="photo-balloon" type="button" data-photo="6" aria-label="Reveal one more memory">
             <span class="balloon-heart">
-              <img src="images/IMG-20261006-WA0025.jpg" alt="Memory seven">
-              <span class="balloon-question">♥</span>
+              <img src="images/IMG-20261006-WA0025.jpg" alt="Another special memory">
+              <span class="balloon-question">?</span>
             </span>
-            <span class="balloon-knot"></span>
-            <span class="balloon-string"></span>
-            <span class="balloon-label">Just For You</span>
+            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-label">Just for you 💗</span>
           </button>
-
         </div>
 
-        <div class="memory-paper" id="memoryPaper" hidden>
-          <button id="closeMemory" class="close-memory"
-                  type="button" aria-label="Close memory">×</button>
-          <img id="revealedPhoto" src="" alt="Revealed memory">
-          <p id="memoryCaption">A little piece of us ❤️</p>
+        <div id="memoryPaper" class="memory-paper" hidden>
+          <button id="closeMemory" class="close-memory" type="button" aria-label="Close memory">×</button>
+          <img id="revealedPhoto" src="" alt="Selected memory">
+          <p id="memoryCaption"></p>
         </div>
 
-        <p class="photo-footnote">
-          Every memory is another reason I smile. ❤️
-        </p>
+        <p class="photo-footnote">Every little memory has a place in my heart. ❤️</p>
 
-        <button class="love-button" id="toTeddyBtn" type="button">
-          One more surprise ↓
+        <button class="love-button" id="toPage4" type="button">
+          Continue to your surprise 💍
         </button>
+        <button class="text-button" id="backTo2" type="button">← Go back</button>
       </div>
+      <p class="page-number">03 / 04</p>
     </section>
 
 
-    <!-- SLIDE 4: TEDDY PROPOSAL -->
-    <section class="slide slide-four locked" id="slide4">
-      <div class="slide-content teddy-content">
-        <p class="eyebrow">A LITTLE TEDDY LOVE STORY</p>
-
-        <h2>Someone has a question<br><span>for someone special.</span></h2>
+    <!-- PAGE 4: TEDDY PROPOSAL AND GIFT -->
+    <section class="page" id="page4" hidden>
+      <div class="page-content teddy-content">
+        <p class="eyebrow">ONE LAST SURPRISE</p>
+        <h2>A little bear,<br><span>a big question. 🧸</span></h2>
+        <p id="teddyMessage" class="teddy-message" aria-live="polite">
+          Someone special is on his way...
+        </p>
 
         <div class="teddy-stage" id="teddyStage">
           <div class="stage-glow"></div>
+          <div class="ground-shadow"></div>
 
           <!-- Male teddy -->
-          <div class="teddy male-teddy" id="maleTeddy"
-               aria-label="Male teddy bear">
-            <div class="teddy-ear ear-left"><i></i></div>
-            <div class="teddy-ear ear-right"><i></i></div>
-
-            <div class="teddy-head">
-              <div class="teddy-forehead"></div>
-              <div class="teddy-eye eye-left"></div>
-              <div class="teddy-eye eye-right"></div>
-              <div class="teddy-muzzle">
-                <div class="teddy-nose"></div>
-                <div class="teddy-mouth"></div>
-              </div>
-              <div class="teddy-blush blush-left"></div>
-              <div class="teddy-blush blush-right"></div>
-            </div>
-
-            <div class="teddy-body">
-              <div class="teddy-belly"></div>
-              <div class="teddy-pocket">
-                <span class="pocket-stitch"></span>
-                <span class="pocket-ring" id="pocketRing">💍</span>
-              </div>
-              <div class="teddy-bow"><span></span><i></i><span></span></div>
-            </div>
-
-            <div class="teddy-arm arm-left"></div>
-            <div class="teddy-arm arm-right" id="maleArm"></div>
-            <div class="teddy-leg leg-left"><i></i></div>
-            <div class="teddy-leg leg-right"><i></i></div>
+          <div class="teddy male-teddy" id="maleTeddy" aria-label="Male teddy bear">
+            <span class="teddy-ear ear-left"><i></i></span>
+            <span class="teddy-ear ear-right"><i></i></span>
+            <span class="teddy-head">
+              <i class="teddy-eye eye-left"></i>
+              <i class="teddy-eye eye-right"></i>
+              <i class="teddy-muzzle"><b class="teddy-nose"></b><b class="teddy-mouth"></b></i>
+              <i class="teddy-blush blush-left"></i>
+              <i class="teddy-blush blush-right"></i>
+            </span>
+            <span class="teddy-body"><i class="teddy-belly"></i></span>
+            <span class="teddy-arm arm-left"></span>
+            <span class="teddy-arm arm-right"></span>
+            <span class="teddy-leg leg-left"><i></i></span>
+            <span class="teddy-leg leg-right"><i></i></span>
+            <span class="teddy-bow"><i></i><span></span><span></span></span>
+            <span class="teddy-pocket"><i class="pocket-stitch"></i><b id="pocketRing" class="pocket-ring">💍</b></span>
+            <span class="heart-patch">♥</span>
           </div>
 
           <!-- Female teddy -->
-          <div class="teddy female-teddy" id="femaleTeddy"
-               aria-label="Female teddy bear">
-            <div class="teddy-ear ear-left"><i></i></div>
-            <div class="teddy-ear ear-right"><i></i></div>
-
-            <div class="teddy-head">
-              <div class="teddy-forehead"></div>
-              <div class="teddy-eye eye-left"></div>
-              <div class="teddy-eye eye-right"></div>
-              <div class="teddy-muzzle">
-                <div class="teddy-nose"></div>
-                <div class="teddy-mouth"></div>
-              </div>
-              <div class="teddy-blush blush-left"></div>
-              <div class="teddy-blush blush-right"></div>
-              <div class="teddy-flower">✿</div>
-            </div>
-
-            <div class="teddy-body">
-              <div class="teddy-belly"></div>
-              <div class="heart-patch">♥</div>
-            </div>
-
-            <div class="teddy-arm arm-left"></div>
-            <div class="teddy-arm arm-right"></div>
-            <div class="teddy-leg leg-left"><i></i></div>
-            <div class="teddy-leg leg-right"><i></i></div>
+          <div class="teddy female-teddy" id="femaleTeddy" aria-label="Female teddy bear">
+            <span class="teddy-ear ear-left"><i></i></span>
+            <span class="teddy-ear ear-right"><i></i></span>
+            <span class="teddy-head">
+              <i class="teddy-eye eye-left"></i>
+              <i class="teddy-eye eye-right"></i>
+              <i class="teddy-muzzle"><b class="teddy-nose"></b><b class="teddy-mouth"></b></i>
+              <i class="teddy-blush blush-left"></i>
+              <i class="teddy-blush blush-right"></i>
+            </span>
+            <span class="teddy-body"><i class="teddy-belly"></i></span>
+            <span class="teddy-arm arm-left"></span>
+            <span class="teddy-arm arm-right"></span>
+            <span class="teddy-leg leg-left"><i></i></span>
+            <span class="teddy-leg leg-right"><i></i></span>
+            <span class="teddy-bow"><i></i><span></span><span></span></span>
+            <span class="heart-patch">♥</span>
           </div>
-
-          <div class="ground-shadow"></div>
-          <div class="landing-hearts" id="landingHearts">♥ ✦ ♥</div>
+          <div class="landing-hearts">♥　♡　♥</div>
         </div>
 
-        <p class="teddy-message" id="teddyMessage" aria-live="polite">
-          Wait… someone is coming to see you. 🧸
-        </p>
-
-        <div class="proposal-actions" id="proposalActions">
-          <button class="love-button" id="proposeBtn" type="button">
-            Let him propose 💍
-          </button>
+        <div id="proposalActions" class="proposal-actions" hidden>
+          <p class="proposal-question">Will you keep choosing this love? 💗</p>
+          <button class="love-button" id="proposeButton" type="button">Yes, always! ❤️</button>
+          <button class="soft-button" id="thinkButton" type="button">Give me a moment 💕</button>
         </div>
 
-        <div class="answer-actions" id="answerActions" hidden>
-          <p class="proposal-question">Will you stay with me? ❤️</p>
-          <button class="love-button" id="acceptBtn" type="button">
-            Yes, always! 💗
-          </button>
-          <button class="soft-button" id="thinkBtn" type="button">
-            Let me think 😳
-          </button>
+        <div id="answerActions" class="answer-actions" hidden>
+          <p class="proposal-question">She said yes! 💖</p>
+          <p class="subtitle">The little bears are going in for a hug...</p>
         </div>
 
-        <!-- Gift with the eighth photo -->
-        <div class="gift-area" id="giftArea" hidden>
-          <p class="gift-instruction">
-            A little gift, with all his love… ❤️
-          </p>
-
-          <button class="gift-box" id="giftBox"
-                  type="button" aria-label="Touch to open the gift">
+        <div id="giftArea" class="gift-area" hidden>
+          <p class="gift-instruction">Your teddy has one final gift for you. Touch it to open. 🎁</p>
+          <button class="gift-box" id="giftBox" type="button" aria-label="Open your gift">
             <img id="giftPhoto" class="gift-photo"
                  src="images/c9a58910846fe6b24a04925975712494.jpg"
                  alt="Your special gift photo">
@@ -352,25 +279,22 @@
             <span class="gift-body"></span>
             <span class="gift-ribbon"></span>
             <span class="gift-bow"></span>
-            <span class="gift-touch">TOUCH ME ♥</span>
+            <span class="gift-touch">TOUCH TO OPEN ✨</span>
           </button>
-
-          <p id="giftMessage" class="gift-message" hidden>
+          <div id="giftMessage" class="gift-message" hidden>
             Happy Birthday, my love. ❤️<br>
-            Your presence is enough for me.<br>
-            From two strangers on Instagram to my favourite person —<br>
-            26 April will always be special to me.
-          </p>
+            We began as strangers on Instagram, but 26 April became one of the most meaningful days in my life.<br>
+            You don't need to do anything extraordinary. <strong>Your presence is enough for me.</strong><br>
+            No matter how far life takes us, I hope we keep making beautiful memories together. 💗
+          </div>
         </div>
 
-        <button class="text-button restart-button" id="restartBtn" type="button">
-          Start our story again ↻
-        </button>
+        <button class="text-button" id="restartButton" type="button">↻ Start our story again</button>
       </div>
+      <p class="page-number">04 / 04</p>
     </section>
-
   </main>
 
-  <footer>EVERY LITTLE PART OF THIS IS FOR YOU ♥</footer>
+  <footer>MADE WITH LOVE ❤️ JUST FOR YOU</footer>
 </body>
 </html>
