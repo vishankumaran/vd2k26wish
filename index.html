@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,11 +24,17 @@
   </header>
 
   <main>
+
     <!-- SLIDE 1: TWO BROKEN HEARTS -->
     <section class="slide slide-one" id="slide1">
       <div class="slide-content">
         <p class="eyebrow">TWO STRANGERS · ONE STORY</p>
-        <h1>Even broken hearts<br><span>can find each other.</span></h1>
+
+        <h1>
+          Even broken hearts<br>
+          <span>can find each other.</span>
+        </h1>
+
         <p class="subtitle">
           Somewhere between two strangers, our story began.
         </p>
@@ -66,12 +72,19 @@
       </div>
     </section>
 
+
     <!-- SLIDE 2: SECRET CODE -->
     <section class="slide slide-two" id="slide2">
       <div class="slide-content lock-content">
         <div class="lock-icon">🔐</div>
+
         <p class="eyebrow">A LITTLE SECRET</p>
-        <h2>Only you can<br><span>unlock my heart.</span></h2>
+
+        <h2>
+          Only you can<br>
+          <span>unlock my heart.</span>
+        </h2>
+
         <p class="subtitle">
           There is a little secret between us.<br>
           Enter our special code to continue.
@@ -79,6 +92,7 @@
 
         <form id="unlockForm" class="unlock-form">
           <label for="secretCode">Our secret code</label>
+
           <input
             id="secretCode"
             name="secretCode"
@@ -87,112 +101,204 @@
             autocomplete="off"
             required
           >
+
           <button class="love-button" type="submit">
             Unlock the memories ♥
           </button>
-          <p id="codeMessage" class="form-message" aria-live="polite"></p>
+
+          <p
+            id="codeMessage"
+            class="form-message"
+            aria-live="polite"
+          ></p>
         </form>
 
-        <p class="tiny-note">A little date. A big feeling. ❤️</p>
+        <p class="tiny-note">
+          A little date. A big feeling. ❤️
+        </p>
       </div>
     </section>
 
-    <!-- SLIDE 3: HEART-SHAPED PHOTO BALLOONS -->
-     
+
     <!-- SLIDE 3: HEART-SHAPED PHOTO BALLOONS -->
     <section class="slide slide-three" id="slide3">
       <div class="slide-content photos-content">
         <p class="eyebrow">OUR LITTLE COLLECTION</p>
-        <h2>Memories that<br><span>make me smile.</span></h2>
-        <p class="subtitle">Touch a floating heart balloon to reveal a memory. ❤️</p>
+
+        <h2>
+          Memories that<br>
+          <span>make me smile.</span>
+        </h2>
+
+        <p class="subtitle">
+          Touch a floating heart balloon to reveal a memory. ❤️
+        </p>
 
         <div class="balloon-field">
-          <button class="photo-balloon balloon-one" data-photo="0" aria-label="Reveal memory one">
+
+          <!-- MEMORY 1 -->
+          <button
+            class="photo-balloon balloon-one"
+            data-photo="0"
+            aria-label="Reveal memory one"
+            type="button"
+          >
             <span class="balloon-heart">
               <img src="images/memory1.jpg.jpg" alt="Memory one">
               <span class="balloon-question">♥</span>
             </span>
-            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-knot"></span>
+            <span class="balloon-string"></span>
             <span class="balloon-label">Memory One</span>
           </button>
 
-          <button class="photo-balloon balloon-two" data-photo="1" aria-label="Reveal memory two">
+          <!-- MEMORY 2 -->
+          <button
+            class="photo-balloon balloon-two"
+            data-photo="1"
+            aria-label="Reveal memory two"
+            type="button"
+          >
             <span class="balloon-heart">
               <img src="images/memory2.jpg.jpg" alt="Memory two">
               <span class="balloon-question">♥</span>
             </span>
-            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-knot"></span>
+            <span class="balloon-string"></span>
             <span class="balloon-label">Memory Two</span>
           </button>
 
-          <button class="photo-balloon balloon-three" data-photo="2" aria-label="Reveal memory three">
+          <!-- MEMORY 3 -->
+          <button
+            class="photo-balloon balloon-three"
+            data-photo="2"
+            aria-label="Reveal memory three"
+            type="button"
+          >
             <span class="balloon-heart">
               <img src="images/memory3.jpg.jpg" alt="Memory three">
               <span class="balloon-question">♥</span>
             </span>
-            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-knot"></span>
+            <span class="balloon-string"></span>
             <span class="balloon-label">Memory Three</span>
           </button>
 
-          <button class="photo-balloon balloon-four" data-photo="3" aria-label="Reveal memory four">
+          <!-- MEMORY 4 -->
+          <button
+            class="photo-balloon balloon-four"
+            data-photo="3"
+            aria-label="Reveal memory four"
+            type="button"
+          >
             <span class="balloon-heart">
               <img src="images/memory4.jpg.jpg" alt="Memory four">
               <span class="balloon-question">♥</span>
             </span>
-            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-knot"></span>
+            <span class="balloon-string"></span>
             <span class="balloon-label">Memory Four</span>
           </button>
 
-          <button class="photo-balloon balloon-five" data-photo="4" aria-label="Reveal memory five">
+          <!-- MEMORY 5 -->
+          <button
+            class="photo-balloon balloon-five"
+            data-photo="4"
+            aria-label="Reveal memory five"
+            type="button"
+          >
             <span class="balloon-heart">
               <img src="images/memory5.jpg.jpg" alt="Memory five">
               <span class="balloon-question">♥</span>
             </span>
-            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-knot"></span>
+            <span class="balloon-string"></span>
             <span class="balloon-label">Memory Five</span>
           </button>
 
-          <button class="photo-balloon balloon-six" data-photo="5" aria-label="Reveal our special memory">
+          <!-- SPECIAL MEMORY -->
+          <button
+            class="photo-balloon balloon-six"
+            data-photo="5"
+            aria-label="Reveal our special memory"
+            type="button"
+          >
             <span class="balloon-heart">
               <img src="images/special.jpg.jpg" alt="Special memory">
               <span class="balloon-question">♥</span>
             </span>
-            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-knot"></span>
+            <span class="balloon-string"></span>
             <span class="balloon-label">Special Memory</span>
           </button>
 
-          <button class="photo-balloon balloon-seven" data-photo="6" aria-label="Reveal one more memory">
+          <!-- MEMORY 7 -->
+          <button
+            class="photo-balloon balloon-seven"
+            data-photo="6"
+            aria-label="Reveal one more memory"
+            type="button"
+          >
             <span class="balloon-heart">
-              <img src="images/IMG-20261006-WA0025.jpg" alt="Our seventh memory">
+              <img
+                src="images/IMG-20261006-WA0025.jpg"
+                alt="Our seventh memory"
+              >
               <span class="balloon-question">♥</span>
             </span>
-            <span class="balloon-knot"></span><span class="balloon-string"></span>
+            <span class="balloon-knot"></span>
+            <span class="balloon-string"></span>
             <span class="balloon-label">Just For You</span>
           </button>
+
         </div>
 
+        <!-- POP-UP MEMORY -->
         <div class="memory-paper" id="memoryPaper" hidden>
-          <button id="closeMemory" class="close-memory" aria-label="Close memory">×</button>
+          <button
+            id="closeMemory"
+            class="close-memory"
+            aria-label="Close memory"
+            type="button"
+          >×</button>
+
           <img id="revealedPhoto" src="" alt="Revealed memory">
-          <p id="memoryCaption">A little piece of us ❤️</p>
+
+          <p id="memoryCaption">
+            A little piece of us ❤️
+          </p>
         </div>
 
-        <p class="photo-footnote">Every memory is another reason I smile. ❤️</p>
-        <button class="love-button" id="toTeddyBtn">One more surprise ↓</button>
+        <p class="photo-footnote">
+          Every memory is another reason I smile. ❤️
+        </p>
+
+        <button class="love-button" id="toTeddyBtn" type="button">
+          One more surprise ↓
+        </button>
       </div>
     </section>
+
 
     <!-- SLIDE 4: TEDDY PROPOSAL, HUG AND GIFT -->
     <section class="slide slide-four" id="slide4">
       <div class="slide-content teddy-content">
         <p class="eyebrow">A LITTLE TEDDY LOVE STORY</p>
-        <h2>Someone has a question<br><span>for someone special.</span></h2>
+
+        <h2>
+          Someone has a question<br>
+          <span>for someone special.</span>
+        </h2>
 
         <div class="teddy-stage" id="teddyStage">
           <div class="stage-glow"></div>
 
-          <!-- Male teddy -->
-          <div class="teddy male-teddy" id="maleTeddy" aria-label="Male teddy bear">
+          <!-- MALE TEDDY -->
+          <div
+            class="teddy male-teddy"
+            id="maleTeddy"
+            aria-label="Male teddy bear"
+          >
             <div class="teddy-ear ear-left"><i></i></div>
             <div class="teddy-ear ear-right"><i></i></div>
 
@@ -200,33 +306,45 @@
               <div class="teddy-forehead"></div>
               <div class="teddy-eye eye-left"></div>
               <div class="teddy-eye eye-right"></div>
+
               <div class="teddy-muzzle">
                 <div class="teddy-nose"></div>
                 <div class="teddy-mouth"></div>
               </div>
+
               <div class="teddy-blush blush-left"></div>
               <div class="teddy-blush blush-right"></div>
             </div>
 
             <div class="teddy-body">
               <div class="teddy-belly"></div>
+
               <div class="teddy-pocket">
                 <span class="pocket-stitch"></span>
                 <span class="pocket-ring" id="pocketRing">💍</span>
               </div>
+
               <div class="teddy-bow">
-                <span></span><i></i><span></span>
+                <span></span>
+                <i></i>
+                <span></span>
               </div>
             </div>
 
             <div class="teddy-arm arm-left"></div>
             <div class="teddy-arm arm-right" id="maleArm"></div>
+
             <div class="teddy-leg leg-left"><i></i></div>
             <div class="teddy-leg leg-right"><i></i></div>
           </div>
 
-          <!-- Female teddy appears after accepting -->
-          <div class="teddy female-teddy" id="femaleTeddy" aria-label="Female teddy bear">
+
+          <!-- FEMALE TEDDY -->
+          <div
+            class="teddy female-teddy"
+            id="femaleTeddy"
+            aria-label="Female teddy bear"
+          >
             <div class="teddy-ear ear-left"><i></i></div>
             <div class="teddy-ear ear-right"><i></i></div>
 
@@ -234,12 +352,15 @@
               <div class="teddy-forehead"></div>
               <div class="teddy-eye eye-left"></div>
               <div class="teddy-eye eye-right"></div>
+
               <div class="teddy-muzzle">
                 <div class="teddy-nose"></div>
                 <div class="teddy-mouth"></div>
               </div>
+
               <div class="teddy-blush blush-left"></div>
               <div class="teddy-blush blush-right"></div>
+
               <div class="teddy-flower">✿</div>
             </div>
 
@@ -250,6 +371,7 @@
 
             <div class="teddy-arm arm-left"></div>
             <div class="teddy-arm arm-right"></div>
+
             <div class="teddy-leg leg-left"><i></i></div>
             <div class="teddy-leg leg-right"><i></i></div>
           </div>
@@ -258,29 +380,64 @@
           <div class="landing-hearts" id="landingHearts">♥　✦　♥</div>
         </div>
 
+
+        <!-- TEDDY MESSAGE -->
         <p class="teddy-message" id="teddyMessage" aria-live="polite">
           Wait… someone is coming to see you. 🧸
         </p>
 
+
+        <!-- START PROPOSAL -->
         <div class="proposal-actions" id="proposalActions">
-          <button class="love-button" id="proposeBtn">Let him propose 💍</button>
+          <button class="love-button" id="proposeBtn" type="button">
+            Let him propose 💍
+          </button>
         </div>
 
+
+        <!-- ANSWER -->
         <div class="answer-actions" id="answerActions" hidden>
-          <p class="proposal-question">Will you stay with me? ❤️</p>
-          <button class="love-button" id="acceptBtn">Yes, always! 💗</button>
-          <button class="soft-button" id="thinkBtn">Let me think 😳</button>
+          <p class="proposal-question">
+            Will you stay with me? ❤️
+          </p>
+
+          <button class="love-button" id="acceptBtn" type="button">
+            Yes, always! 💗
+          </button>
+
+          <button class="soft-button" id="thinkBtn" type="button">
+            Let me think 😳
+          </button>
         </div>
 
+
+        <!-- GIFT FROM FEMALE TEDDY -->
         <div class="gift-area" id="giftArea" hidden>
-          <p class="gift-instruction">He has one last gift for you…</p>
-          <button class="gift-box" id="giftBox" aria-label="Touch to open the gift">
+          <p class="gift-instruction">
+            He has one last gift for you… ❤️
+          </p>
+
+          <button
+            class="gift-box"
+            id="giftBox"
+            aria-label="Touch to open the gift"
+            type="button"
+          >
+            <!-- SPECIAL IMAGE REVEALED FROM THE GIFT -->
+            <img
+              id="giftPhoto"
+              class="gift-photo"
+              src="images/c9a58910846fe6b24a04925975712494.jpg"
+              alt="A special gift from the female teddy"
+            >
+
             <span class="gift-lid"></span>
             <span class="gift-body"></span>
             <span class="gift-ribbon"></span>
             <span class="gift-bow"></span>
             <span class="gift-touch">TOUCH ME ♥</span>
           </button>
+
           <p id="giftMessage" class="gift-message" hidden>
             Happy Birthday, my love. ❤️<br>
             Your presence is enough for me.<br>
@@ -289,15 +446,26 @@
           </p>
         </div>
 
-        <button class="text-button restart-button" id="restartBtn">
+
+        <!-- RESTART -->
+        <button
+          class="text-button restart-button"
+          id="restartBtn"
+          type="button"
+        >
           Start our story again ↻
         </button>
+
       </div>
     </section>
+
   </main>
 
-  <footer>EVERY LITTLE PART OF THIS IS FOR YOU ♥</footer>
+  <footer>
+    EVERY LITTLE PART OF THIS IS FOR YOU ♥
+  </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+```
