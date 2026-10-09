@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100916">
+  <title>Unlock My Heart ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-glow"></div>
+  <div id="particles"></div>
+
+  <main class="website">
+    <header class="brand">♥ A LITTLE WORLD MADE FOR YOU ♥</header>
+
+    <!-- PAGE 1: HEARTS AND PASSWORD -->
+    <section class="page active" id="page1">
+      <p class="eyebrow">CHAPTER ONE</p>
+      <h1>Two hearts, one story.</h1>
+      <p class="subtitle">Two different worlds, slowly finding each other.</p>
+
+      <div class="heart-scene" id="heartScene">
+        <div class="split-heart black-heart">
+          <span></span>
+        </div>
+        <div class="split-heart pink-heart">
+          <span></span>
+        </div>
+        <div class="united-heart">♥</div>
+      </div>
+
+      <p class="hint" id="heartHint">Watch the hearts find each other…</p>
+
+      <div class="panel hidden" id="passwordPanel">
+        <div class="lock-heart">♡</div>
+        <h2>Unlock my heart</h2>
+        <p>Can you unlock this little piece of our story?</p>
+
+        <form id="passwordForm">
+          <input id="passwordInput" type="password"
+            placeholder="Enter our secret password" required>
+          <button class="button primary" type="submit">Unlock my heart ♥</button>
+        </form>
+        <p class="small-note">Demo password: <b>2604</b></p>
+        <p id="passwordMessage" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- PAGE 2: SEVEN PHOTOS -->
+    <section class="page" id="page2">
+      <p class="eyebrow">CHAPTER TWO</p>
+      <h1>Seven pieces of us.</h1>
+      <p class="subtitle">Tap each little heart to discover a memory.</p>
+      <p class="progress" id="progress">0 / 7 memories discovered</p>
+
+      <div class="hearts-grid" id="heartsGrid"></div>
+
+      <div class="modal hidden" id="memoryModal">
+        <button class="close" id="closeMemory" aria-label="Close">×</button>
+        <article class="memory-paper" id="memoryPaper">
+          <div class="fold"></div>
+          <p class="eyebrow">A LITTLE MEMORY</p>
+          <div class="photo-frame">
+            <img id="memoryPhoto" alt="Memory photo">
+            <div class="photo-placeholder" id="memoryPlaceholder">
+              Your photo goes here
+            </div>
+          </div>
+          <h2 id="memoryTitle">Our memory</h2>
+          <p id="memoryCaption">A little moment, kept forever.</p>
+          <button class="button primary" id="keepMemory">
+            Keep this memory ♥
+          </button>
+        </article>
+      </div>
+
+      <p class="hint" id="memoryHint">Every heart has a story.</p>
+      <button class="button primary hidden" id="continueButton">
+        Meet the little teddy 🧸 →
+      </button>
+    </section>
+
+    <!-- PAGE 3: TEDDY PROPOSAL AND GIFT -->
+    <section class="page" id="page3">
+      <p class="eyebrow">CHAPTER THREE</p>
+      <h1>A little question for you.</h1>
+      <p class="subtitle">Someone very small has something very big to ask.</p>
+
+      <div class="teddy-stage">
+        <div class="teddy-shadow"></div>
+
+        <!-- CSS 3D TEDDY -->
+        <div class="teddy" id="teddy" aria-label="Vishan's teddy bear">
+          <div class="ear ear-left"><i></i></div>
+          <div class="ear ear-right"><i></i></div>
+
+          <div class="head">
+            <div class="head-fur"></div>
+            <div class="eye eye-left"><i></i></div>
+            <div class="eye eye-right"><i></i></div>
+            <div class="brow brow-left"></div>
+            <div class="brow brow-right"></div>
+            <div class="cheek cheek-left"></div>
+            <div class="cheek cheek-right"></div>
+
+            <div class="muzzle">
+              <div class="nose"></div>
+              <div class="mouth"></div>
+            </div>
+          </div>
+
+          <div class="neck-bow">
+            <span></span><i></i><b></b>
+          </div>
+
+          <div class="body">
+            <div class="belly"></div>
+            <div class="name-patch">VISHAN</div>
+            <div class="stitch">♡</div>
+          </div>
+
+          <div class="arm arm-left"><i></i></div>
+          <div class="arm arm-right"><i></i></div>
+          <div class="paw paw-left"></div>
+          <div class="paw paw-right"></div>
+          <div class="leg leg-left"><i></i></div>
+          <div class="leg leg-right"><i></i></div>
+          <div class="foot foot-left"><span></span></div>
+          <div class="foot foot-right"><span></span></div>
+
+          <div class="held-heart">♥</div>
+        </div>
+      </div>
+
+      <div class="proposal-card" id="proposalCard">
+        <p class="dialogue" id="dialogue">
+          Madam… en kooda forever irupeengala? 🥹❤️
+        </p>
+        <p class="reaction" id="reaction">Teddy is feeling shy…</p>
+
+        <div class="proposal-buttons" id="proposalButtons">
+          <button class="button primary" id="yesButton">
+            YES, OF COURSE! 💗
+          </button>
+          <button class="button secondary" id="noButton">
+            Let me think 🙈
+          </button>
+        </div>
+      </div>
+
+      <div class="gift-area hidden" id="giftArea">
+        <h2>YAY! Teddy has a gift for you! 🎀</h2>
+        <p>He picked this especially for you.</p>
+
+        <button class="gift-box" id="giftBox" aria-label="Open your gift">
+          <span class="gift-glow"></span>
+          <span class="box-body"><i></i></span>
+          <span class="box-lid"><i></i></span>
+          <span class="gift-bow">♡</span>
+        </button>
+        <p class="hint">Tap the gift box to open it.</p>
+
+        <div class="gift-reveal hidden" id="giftReveal">
+          <div class="gift-photo-frame">
+            <img id="giftPhoto" alt="Your special gift">
+            <div class="photo-placeholder" id="giftPlaceholder">
+              Add your special picture
+            </div>
+          </div>
+          <h2>A little piece of my heart ❤️</h2>
+          <p id="giftMessage">
+            Your presence is enough for me.
+          </p>
+          <button class="button secondary" id="restartButton">
+            Watch our story again ↻
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer>Made with love, just for you <span>♥</span></footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+2. style.css
+
+This is the important part for making the teddy look like a soft, rounded 3D plush toy. The fur shading, raised muzzle, glossy eyes, layered paws, and soft shadows are all created in CSS.
+
+
+:root {
+  --night: #100916;
+  --pink: #f5a7ca;
+  --baby-pink: #ffd5e7;
+  --gold: #f6d7a4;
+  --cream: #ffe9d2;
+  --text: #fff5fb;
+  --muted: #d0bdd1;
+  --brown: #b77c50;
+  --brown-light: #e3b58a;
+  --brown-dark: #704329;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 0%, #42213f 0%, transparent 50%),
+    linear-gradient(150deg, #100916, #160d20 55%, #080710);
+  overflow-x: hidden;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.background-glow {
+  position: fixed;
+  inset: auto;
+  top: 10%;
+  left: 50%;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: #ee8bbd;
+  filter: blur(150px);
+  opacity: .13;
+  pointer-events: none;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.website {
+  width: min(920px, calc(100% - 28px));
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.brand {
+  text-align: center;
+  padding: 25px 0 0;
+  font-size: .7rem;
+  letter-spacing: .17em;
+  color: #dfc7de;
+}
+
+.brand span, footer span { color: var(--pink); }
+
+.page {
+  display: none;
+  min-height: calc(100vh - 100px);
+  padding: 45px 0;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  animation: pageEnter .8s ease both;
+}
+
+.page.active { display: flex; }
+
+.eyebrow {
+  color: var(--gold);
+  font-size: .7rem;
+  letter-spacing: .19em;
+  margin: 0 0 12px;
+}
+
+h1, h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 7vw, 4.2rem);
+  line-height: 1.1;
+  margin: 0;
+}
+
+h2 { margin: 12px 0; }
+
+.subtitle {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 570px;
+  margin: 15px auto;
+}
+
+.hint {
+  color: #e0cbdf;
+  margin: 20px 0;
+  font-size: .9rem;
+}
+
+.hidden { display: none !important; }
+
+.button {
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 21px;
+  font-weight: 700;
+  transition: transform .2s, box-shadow .2s, filter .2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.button:active { transform: scale(.96); }
+
+.primary {
+  color: #39182d;
+  background: linear-gradient(135deg, #ffe6f0, #f4a5ca 55%, #e880b1);
+  box-shadow: 0 8px 25px #e980b333;
+}
+
+.secondary {
+  color: var(--text);
+  background: #ffffff0a;
+  border: 1px solid #f4c5df55;
+}
+
+/* PAGE ONE: TWO BROKEN HEARTS */
+
+.heart-scene {
+  position: relative;
+  height: 230px;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto 0;
+}
+
+.split-heart {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  transform: rotate(-45deg);
+  border-radius: 10px;
+  transition: left 2s ease, right 2s ease, opacity .7s,
+    transform 2s ease;
+}
+
+.split-heart::before,
+.split-heart::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.split-heart::before { top: -45px; }
+.split-heart::after { left: 45px; }
+
+.black-heart {
+  left: calc(50% - 120px);
+  background: #08070c;
+  box-shadow: inset 0 0 0 2px #514054, 0 0 20px #000;
+}
+
+.black-heart::before, .black-heart::after {
+  background: #08070c;
+  box-shadow: inset 0 0 0 2px #514054;
+}
+
+.pink-heart {
+  right: calc(50% - 120px);
+  background: var(--baby-pink);
+  box-shadow: 0 0 25px #f5a7ca66;
+}
+
+.pink-heart::before, .pink-heart::after {
+  background: var(--baby-pink);
+}
+
+.split-heart span {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 44px;
+  height: 83px;
+  width: 3px;
+  transform: rotate(28deg);
+  background: linear-gradient(transparent, #b8a0b6, transparent);
+}
+
+.heart-scene.merging .black-heart {
+  left: calc(50% - 55px);
+  transform: rotate(-45deg) scale(.85);
+}
+
+.heart-scene.merging .pink-heart {
+  right: calc(50% - 55px);
+  transform: rotate(-45deg) scale(.85);
+}
+
+.united-heart {
+  opacity: 0;
+  position: absolute;
+  color: var(--pink);
+  font-size: 145px;
+  line-height: 1;
+  transform: scale(.1);
+  text-shadow: 0 0 25px #ff9acb, 0 0 70px #ef76b2;
+  transition: opacity .7s, transform .9s;
+}
+
+.heart-scene.merged .split-heart {
+  opacity: 0;
+  transform: rotate(-45deg) scale(.1);
+}
+
+.heart-scene.merged .united-heart {
+  opacity: 1;
+  transform: scale(1);
+  animation: heartbeat 1.6s infinite;
+}
+
+.panel {
+  width: min(420px, 100%);
+  padding: 25px;
+  margin: 15px auto;
+  border: 1px solid #f5c3df33;
+  border-radius: 23px;
+  background: #21152bc9;
+  box-shadow: 0 20px 70px #0004;
+  animation: riseIn .6s ease both;
+}
+
+.panel p { color: var(--muted); line-height: 1.5; }
+.lock-heart { font-size: 3rem; color: var(--pink); }
+
+#passwordForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input {
+  padding: 14px;
+  width: 100%;
+  color: white;
+  background: #100b17;
+  border: 1px solid #f5b8d84d;
+  border-radius: 13px;
+}
+
+input::placeholder { color: #a998ac; }
+.small-note { font-size: .78rem; }
+#passwordMessage { min-height: 1.3em; color: var(--pink); }
+
+/* PAGE TWO: SEVEN HEARTS */
+
+.progress { color: var(--gold); }
+
+.hearts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 72px);
+  justify-content: center;
+  gap: 22px;
+  margin: 22px auto;
+}
+
+.memory-heart {
+  border: 0;
+  background: transparent;
+  position: relative;
+  font-size: 3.6rem;
+  color: var(--pink);
+  text-shadow: 0 0 18px #f5a7ca88;
+  animation: heartFloat 2.5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  transition: transform .3s, color .3s;
+}
+
+.memory-heart::after {
+  content: attr(data-number);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #4c2340;
+  font-size: .72rem;
+  font-weight: bold;
+}
+
+.memory-heart:hover { transform: scale(1.15); }
+.memory-heart.opened { color: var(--gold); }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #08050de8;
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.close {
+  position: absolute;
+  right: 18px;
+  top: 15px;
+  color: white;
+  background: #ffffff16;
+  border: 0;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 1.8rem;
+}
+
+.memory-paper {
+  position: relative;
+  width: min(390px, 100%);
+  padding: 25px;
+  background: linear-gradient(140deg, #fff7ed, #f8dce8);
+  color: #452d40;
+  border-radius: 5px 18px 6px 14px;
+  box-shadow: 0 25px 90px #0009;
+  transform-origin: top center;
+  animation: paperOpen .9s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.memory-paper .eyebrow { color: #9f587d; }
+
+.fold {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 42px solid #e7b7ce;
+  border-left: 42px solid transparent;
+}
+
+.photo-frame {
+  position: relative;
+  aspect-ratio: 4/3;
+  padding: 9px;
+  background: white;
+  box-shadow: 0 7px 18px #7b4e6422;
+  margin: 15px 0;
+}
+
+.photo-frame img, .gift-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-placeholder {
+  position: absolute;
+  inset: 9px;
+  display: none;
+  place-items: center;
+  color: #a06081;
+  background: repeating-linear-gradient(
+    135deg, #f8e7ef 0 12px, #f1d8e4 12px 24px
+  );
+  font-size: 1rem;
+  padding: 12px;
+}
+
+.memory-paper h2 { margin: 14px 0 8px; }
+#memoryCaption { line-height: 1.6; color: #76576e; }
+
+/* PAGE THREE: 3D PLUSH TEDDY */
+
+.teddy-stage {
+  position: relative;
+  width: min(100%, 410px);
+  height: 345px;
+  margin: 12px auto 0;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+  isolation: isolate;
+}
+
+.teddy-shadow {
+  position: absolute;
+  bottom: 19px;
+  left: 50%;
+  width: 190px;
+  height: 30px;
+  transform: translateX(-50%);
+  background: #0008;
+  filter: blur(13px);
+  border-radius: 50%;
+  animation: shadowBreath 3s ease-in-out infinite;
+}
+
+/* The teddy is built from layered CSS shapes. */
+.teddy {
+  --fur: #bd875d;
+  --fur-light: #e4b88d;
+  --fur-dark: #825437;
+  position: relative;
+  width: 240px;
+  height: 310px;
+  transform-style: preserve-3d;
+  transform: rotateY(-7deg);
+  animation: teddyBreathing 3s ease-in-out infinite;
+  filter: drop-shadow(0 16px 14px #0005);
+  transition: transform .5s ease;
+}
+
+.teddy:hover { transform: rotateY(5deg) rotateX(-2deg); }
+
+/* Ears */
+.ear {
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  width: 68px;
+  height: 75px;
+  border-radius: 48% 48% 43% 43%;
+  background: radial-gradient(ellipse at 30% 25%,
+    #f0c99e 0%, var(--fur-light) 18%, var(--fur) 68%, var(--fur-dark) 100%);
+  border: 1px solid #805237;
+  box-shadow: inset 5px 5px 9px #ffe3b755,
+              inset -8px -8px 12px #633b293f,
+              3px 7px 8px #0003;
+}
+
+.ear i {
+  position: absolute;
+  inset: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f4c0c8, #bd7785 90%);
+  box-shadow: inset 2px 3px 6px #7e3e5944;
+}
+
+.ear-left { left: 22px; transform: rotate(-25deg); }
+.ear-right { right: 22px; transform: rotate(25deg); }
+
+/* Head and fur highlights */
+.head {
+  position: absolute;
+  z-index: 3;
+  top: 22px;
+  left: 37px;
+  width: 166px;
+  height: 150px;
+  border-radius: 48% 48% 45% 45%;
+  background:
+    radial-gradient(ellipse at 28% 20%, #f3d2a7 0%, transparent 26%),
+    radial-gradient(ellipse at 35% 28%, #e1b78b 0%, var(--fur-light) 25%,
+      var(--fur) 67%, var(--fur-dark) 100%);
+  border: 1px solid #855537;
+  box-shadow: inset 7px 8px 12px #fff0cc42,
+              inset -12px -13px 18px #633b294c,
+              4px 10px 15px #0004;
+  transform: translateZ(12px);
+}
+
+.head-fur {
+  position: absolute;
+  inset: 8px 12px auto;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #f9dfb65e, transparent);
+  filter: blur(4px);
+}
+
+/* Glassy eyes */
+.eye {
+  position: absolute;
+  top: 57px;
+  width: 19px;
+  height: 25px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 35% 25%, #fff 0 5%, #423039 10%, #130e15 66%, #050407 100%);
+  border: 2px solid #805537;
+  box-shadow: 0 2px 4px #42271d, 0 0 7px #1c101b55;
+  animation: eyeBlink 5.2s infinite;
+  transform-origin: center;
+}
+
+.eye::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 5px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 3px 7px 0 -2px #ffffffaa;
+}
+
+.eye-left { left: 43px; }
+.eye-right { right: 43px; }
+
+.brow {
+  position: absolute;
+  top: 48px;
+  width: 25px;
+  height: 7px;
+  border-top: 3px solid #85553788;
+  border-radius: 50%;
+}
+
+.brow-left { left: 39px; transform: rotate(-8deg); }
+.brow-right { right: 39px; transform: rotate(8deg); }
+
+/* Plush cheeks */
+.cheek {
+  position: absolute;
+  top: 88px;
+  width: 28px;
+  height: 14px;
+  border-radius: 50%;
+  background: #f18ba6a8;
+  filter: blur(3px);
+  opacity: .85;
+}
+
+.cheek-left { left: 19px; }
+.cheek-right { right: 19px; }
+
+/* Raised muzzle */
+.muzzle {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  width: 65px;
+  height: 49px;
+  transform: translateX(-50%) translateZ(10px);
+  border-radius: 47% 47% 50% 50%;
+  background: radial-gradient(ellipse at 35% 20%,
+    #fff0d9, #f4d8b9 55%, #c99c75 100%);
+  box-shadow: inset 3px 4px 7px #fff9e4,
+              inset -4px -5px 8px #93674844,
+              0 5px 8px #55341e44;
+}
+
+.nose {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  width: 19px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: 45% 45% 55% 55%;
+  background: radial-gradient(circle at 35% 25%, #8e6670, #3c222d 75%);
+  box-shadow: inset 2px 2px 3px #fff5;
+}
+
+.mouth {
+  position: absolute;
+  top: 23px;
+  left: 50%;
+  width: 18px;
+  height: 10px;
+  transform: translateX(-50%);
+  border-bottom: 2px solid #75484a;
+  border-radius: 50%;
+}
+
+/* Bow tie */
+.neck-bow {
+  position: absolute;
+  z-index: 5;
+  top: 155px;
+  left: 50%;
+  width: 70px;
+  height: 26px;
+  transform: translateX(-50%) translateZ(20px);
+}
+
+.neck-bow span, .neck-bow b {
+  position: absolute;
+  top: 1px;
+  width: 30px;
+  height: 23px;
+  background: linear-gradient(135deg, #ffbad9, #cb548e);
+  border: 1px solid #b3467c;
+  box-shadow: inset 2px 2px 4px #fff8;
+}
+
+.neck-bow span {
+  left: 3px;
+  clip-path: polygon(0 0, 100% 25%, 100% 75%, 0 100%, 15% 50%);
+}
+
+.neck-bow b {
+  right: 3px;
+  clip-path: polygon(0 25%, 100% 0, 85% 50%, 100% 100%, 0 75%);
+}
+
+.neck-bow i {
+  position: absolute;
+  z-index: 2;
+  left: 29px;
+  top: 7px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #ffe4f0, #d85c96);
+}
+
+/* Body */
+.body {
+  position: absolute;
+  z-index: 2;
+  top: 160px;
+  left: 45px;
+  width: 150px;
+  height: 125px;
+  border-radius: 48% 48% 40% 40%;
+  background:
+    radial-gradient(ellipse at 28% 18%, #f2d0a5 0%, transparent 25%),
+    radial-gradient(ellipse at 35% 25%, #e1b78b, var(--fur-light) 25%,
+      var(--fur) 65%, var(--fur-dark) 100%);
+  border: 1px solid #855537;
+  box-shadow: inset 7px 7px 13px #fff0cc44,
+              inset -10px -12px 17px #633b2948,
+              4px 9px 14px #0003;
+  transform: translateZ(4px);
+}
+
+.belly {
+  position: absolute;
+  top: 23px;
+  left: 29px;
+  width: 91px;
+  height: 86px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 35% 25%,
+    #f8e0c1, #e5c19a 62%, #b9845c);
+  box-shadow: inset 4px 5px 9px #fff2d5,
+              inset -5px -6px 9px #98684344;
+}
+
+.name-patch {
+  position: absolute;
+  z-index: 2;
+  top: 47px;
+  left: 42px;
+  padding: 6px 8px;
+  color: #6c304b;
+  background: linear-gradient(145deg, #ffe5ef, #edb4cc);
+  border: 1px solid #c780a0;
+  border-radius: 5px;
+  box-shadow: 0 3px 5px #59314933;
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  transform: translateZ(10px);
+}
+
+.stitch {
+  position: absolute;
+  bottom: 12px;
+  left: 69px;
+  color: #a56f7e;
+  font-size: 12px;
+}
+
+/* Arms move independently for teddy gestures */
+.arm {
+  position: absolute;
+  z-index: 4;
+  top: 174px;
+  width: 48px;
+  height: 85px;
+  border-radius: 48%;
+  background: radial-gradient(ellipse at 28% 20%,
+    #edc69b, #c18b60 55%, #805035);
+  border: 1px solid #855537;
+  box-shadow: inset 4px 4px 7px #ffe4bc66,
+              inset -5px -5px 8px #59351f55,
+              3px 5px 8px #0003;
+  transform-origin: top center;
+}
+
+.arm i {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  width: 25px;
+  height: 22px;
+  border-radius: 50%;
+  background: #d4a174;
+  box-shadow: inset 2px 3px 5px #ffe3b8;
+}
+
+.arm-left { left: 21px; transform: rotate(25deg); }
+.arm-right { right: 21px; transform: rotate(-25deg); }
+
+.paw {
+  position: absolute;
+  z-index: 5;
+  top: 230px;
+  width: 40px;
+  height: 37px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #efc79b, #bd875d 70%, #815034);
+  border: 1px solid #8c5a3b;
+  box-shadow: inset 3px 3px 5px #ffe2b477, 2px 4px 6px #0003;
+}
+
+.paw-left { left: 14px; }
+.paw-right { right: 14px; }
+
+.leg {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  width: 63px;
+  height: 67px;
+  border-radius: 45%;
+  background: radial-gradient(ellipse at 30% 20%,
+    #e9c093, #bd875d 62%, #7e4d31);
+  border: 1px solid #805237;
+  box-shadow: inset 5px 5px 9px #ffe0b866,
+              inset -6px -7px 10px #633b2944;
+}
+
+.leg-left { left: 40px; transform: rotate(8deg); }
+.leg-right { right: 40px; transform: rotate(-8deg); }
+
+.foot {
+  position: absolute;
+  z-index: 4;
+  bottom: 1px;
+  width: 56px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 30% 25%, #e8b98c, #a66e49);
+  border: 1px solid #805237;
+  box-shadow: inset 4px 4px 7px #ffe2b477, 2px 4px 6px #0004;
+}
+
+.foot-left { left: 35px; }
+.foot-right { right: 35px; }
+
+.foot span {
+  position: absolute;
+  top: 8px;
+  left: 15px;
+  width: 26px;
+  height: 13px;
+  border-radius: 50%;
+  background: #e9a8b6;
+  box-shadow: inset 2px 2px 4px #874a5b55;
+}
+
+.held-heart {
+  position: absolute;
+  z-index: 7;
+  top: 183px;
+  right: 5px;
+  font-size: 43px;
+  color: #ff91bd;
+  text-shadow: 0 0 12px #ff91bd, 0 0 25px #e879a9;
+  animation: heartbeat 1.4s infinite;
+}
+
+/* TEDDY PERSONALITY ANIMATIONS */
+
+.teddy.proposing .arm-left {
+  animation: leftPawWave .85s ease-in-out 2;
+}
+
+.teddy.proposing .head {
+  animation: shyTilt 1.2s ease-in-out 1;
+}
+
+.teddy.proposing .held-heart {
+  animation: heartbeat .7s infinite;
+}
+
+.teddy.happy {
+  animation: happyJump .55s ease-in-out 5;
+}
+
+.teddy.happy .arm-left {
+  animation: happyPaw .5s ease-in-out 6;
+}
+
+.teddy.happy .arm-right {
+  animation: happyPaw .5s ease-in-out 6 reverse;
+}
+
+.teddy.grumpy .head {
+  animation: grumpyShake .3s ease-in-out 4;
+}
+
+.teddy.grumpy .arm-left {
+  transform: rotate(65deg);
+}
+
+.teddy.grumpy .arm-right {
+  transform: rotate(-65deg);
+}
+
+.teddy.sad .head {
+  transform: rotate(8deg) translateY(5px);
+}
+
+.teddy.sad .held-heart {
+  color: #a8a0ba;
+  text-shadow: 0 0 15px #b4a5cc;
+}
+
+.proposal-card {
+  width: min(500px, 100%);
+  margin: 0 auto;
+  padding: 23px;
+  border: 1px solid #f5c5df30;
+  border-radius: 23px;
+  background: #ffffff08;
+}
+
+.dialogue {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.25rem, 4vw, 1.6rem);
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+
+.reaction {
+  min-height: 1.2em;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.proposal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* GIFT BOX */
+
+.gift-area {
+  width: 100%;
+  padding: 25px 0 45px;
+  animation: riseIn .8s ease both;
+}
+
+.gift-area > p { color: var(--muted); }
+
+.gift-box {
+  display: block;
+  position: relative;
+  width: 180px;
+  height: 175px;
+  border: 0;
+  background: transparent;
+  margin: 15px auto 0;
+  animation: giftFloat 2.4s ease-in-out infinite;
+}
+
+.box-body {
+  position: absolute;
+  left: 19px;
+  bottom: 8px;
+  width: 142px;
+  height: 100px;
+  border-radius: 7px 7px 14px 14px;
+  background: linear-gradient(100deg, #b83976, #f6a5ca 48%, #b83976);
+  border: 2px solid #ffd6e7;
+  box-shadow: inset 0 -12px 20px #73183e44;
+}
+
+.box-body i {
+  position: absolute;
+  left: 55px;
+  top: 0;
+  height: 100%;
+  width: 28px;
+  background: linear-gradient(90deg, #f3d18c, #fff1c8, #c18a35);
+}
+
+.box-lid {
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  top: 46px;
+  width: 160px;
+  height: 34px;
+  border-radius: 7px;
+  background: linear-gradient(100deg, #d65795, #ffc6e0 48%, #d65795);
+  border: 2px solid #ffe2ef;
+  transform-origin: left bottom;
+  transition: transform .9s ease, top .9s ease;
+}
+
+.box-lid i {
+  position: absolute;
+  left: 65px;
+  top: 0;
+  width: 28px;
+  height: 100%;
+  background: linear-gradient(90deg, #f3d18c, #fff1c8, #c18a35);
+}
+
+.gift-bow {
+  position: absolute;
+  z-index: 4;
+  top: 12px;
+  left: 68px;
+  color: #ffe8ad;
+  font-size: 47px;
+  text-shadow: 0 0 12px #ffe8ad88;
+  transition: transform .8s;
+}
+
+.gift-glow {
+  position: absolute;
+  z-index: 0;
+  inset: 25px;
+  background: #ffc6e7;
+  filter: blur(35px);
+  opacity: 0;
+  transition: opacity .8s;
+}
+
+.gift-box.open .box-lid {
+  top: 13px;
+  transform: translate(-15px, -35px) rotate(-27deg);
+}
+
+.gift-box.open .gift-bow {
+  transform: translateY(-38px) rotate(-20deg);
+}
+
+.gift-box.open .gift-glow { opacity: .9; }
+
+.gift-photo-frame {
+  position: relative;
+  width: min(320px, 100%);
+  aspect-ratio: 4/3;
+  padding: 10px;
+  margin: 20px auto;
+  background: #fff6eb;
+  box-shadow: 0 18px 50px #0007;
+  transform: rotate(-2deg);
+  animation: photoRise 1.1s ease both;
+}
+
+.gift-photo-frame .photo-placeholder { inset: 10px; }
+
+.gift-reveal {
+  width: min(430px, 100%);
+  margin: 28px auto 0;
+  animation: riseIn .8s ease both;
+}
+
+.gift-reveal h2 { font-size: 1.8rem; }
+.gift-reveal p { color: var(--muted); line-height: 1.7; }
+
+/* FLOATING PARTICLES */
+
+.particle {
+  position: fixed;
+  left: var(--x);
+  top: var(--y);
+  color: var(--particle-color);
+  font-size: var(--size);
+  pointer-events: none;
+  z-index: 30;
+  animation: particleBurst .9s ease-out forwards;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0 28px;
+  color: #a998ad;
+  font-size: .8rem;
+}
+
+/* ANIMATION KEYFRAMES */
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(18px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.12); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+@keyframes heartFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+
+@keyframes paperOpen {
+  0% { opacity: 0; transform: perspective(900px) rotateX(-78deg) scale(.8); }
+  70% { opacity: 1; transform: perspective(900px) rotateX(7deg) scale(1.02); }
+  100% { transform: perspective(900px) rotateX(0) scale(1); }
+}
+
+@keyframes teddyBreathing {
+  0%, 100% { transform: rotateY(-7deg) translateY(0) scaleY(1); }
+  50% { transform: rotateY(-7deg) translateY(-4px) scaleY(1.012); }
+}
+
+@keyframes shadowBreath {
+  0%, 100% { transform: translateX(-50%) scaleX(1); opacity: .7; }
+  50% { transform: translateX(-50%) scaleX(.87); opacity: .45; }
+}
+
+@keyframes eyeBlink {
+  0%, 45%, 49%, 100% { scale: 1 1; }
+  47% { scale: 1 .08; }
+}
+
+@keyframes shyTilt {
+  0%, 100% { rotate: 0deg; }
+  35% { rotate: -8deg; }
+  70% { rotate: 5deg; }
+}
+
+@keyframes leftPawWave {
+  0%, 100% { transform: rotate(25deg); }
+  50% { transform: rotate(-35deg) translateY(-8px); }
+}
+
+@keyframes happyJump {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  40% { translate: 0 -24px; rotate: 4deg; }
+  70% { translate: 0 -8px; rotate: -4deg; }
+}
+
+@keyframes happyPaw {
+  0%, 100% { rotate: 0deg; }
+  50% { rotate: -35deg; }
+}
+
+@keyframes grumpyShake {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: -7deg; }
+  75% { rotate: 7deg; }
+}
+
+@keyframes giftFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+
+@keyframes photoRise {
+  from { opacity: 0; transform: translateY(40px) scale(.75) rotate(7deg); }
+  to { opacity: 1; transform: translateY(0) scale(1) rotate(-2deg); }
+}
+
+@keyframes particleBurst {
+  to {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) rotate(160deg) scale(.2);
+  }
+}
+
+@media (max-width: 520px) {
+  .page { padding-top: 32px; }
+  .panel { padding: 20px 16px; }
+  .hearts-grid { grid-template-columns: repeat(4, 58px); gap: 15px; }
+  .memory-heart { font-size: 2.9rem; }
+  .teddy-stage { transform: scale(.9); transform-origin: top center; margin-bottom: -20px; }
+  .proposal-card { padding: 18px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+3. script.js
+
+This controls the heart merging, password, seven photo memories, teddy's reactions, and the gift reveal. You can customize the photo paths, captions, password, and gift message at the top.
+
+
+/* ==========================================
+   UNLOCK MY HEART — PERSONAL SETTINGS
+   ========================================== */
+
+const CONFIG = {
+  password: "2604",
+
+  memories: [
+    {
+      title: "The first little spark",
+      caption: "Two strangers, and a story neither expected.",
+      image: "images/photo1.jpg"
+    },
+    {
+      title: "A moment to keep",
+      caption: "Some moments become precious without even trying.",
+     
