@@ -1,479 +1,296 @@
 
-/* ==========================================
-   UNLOCK MY HEART — PERSONAL SETTINGS
-   ========================================== */
+"use strict";
 
-const CONFIG = {
-  password: "2604",
+document.addEventListener("DOMContentLoaded", () => {
+  const $ = (selector) => document.querySelector(selector);
 
-  memories: [
+  const slide1 = $("#slide1");
+  const slide2 = $("#slide2");
+  const slide3 = $("#slide3");
+  const slide4 = $("#slide4");
+
+  // The real code is exactly :2007
+  const SECRET_CODE = ":2007";
+
+  // Your four images, in the order you requested.
+  const memories = [
     {
-      title: "The first little spark",
-      caption: "Two strangers, and a story neither expected.",
-      image: "images/photo1.jpg"
+      image: "images/IMG_20260829_210124_069.jpg",
+      caption: "One more little piece of our story. ❤️"
     },
     {
-      title: "A moment to keep",
-      caption: "Some moments become precious without even trying.",
-      image: "images/photo2.jpg"
+      image: "images/Screenshot_20260914-215430.jpg",
+      caption: "A memory I want to keep close to my heart. 💗"
     },
     {
-      title: "A smile I remember",
-      caption: "One little memory that still makes me smile.",
-      image: "images/photo3.jpg"
+      image: "images/file_00000000f3f47208bfd42682f109e520.png",
+      caption: "You make ordinary moments feel special. ✨"
     },
     {
-      title: "Our own little world",
-      caption: "Even ordinary moments feel different with you.",
-      image: "images/photo4.jpg"
-    },
-    {
-      title: "A favourite feeling",
-      caption: "You have a way of making a moment special.",
-      image: "images/photo5.jpg"
-    },
-    {
-      title: "Close to my heart",
-      caption: "If I could, I would save this moment forever.",
-      image: "images/photo6.jpg"
-    },
-    {
-      title: "Still my favourite",
-      caption: "One more little piece of our story.",
-      image: "images/photo7.jpg"
+      image: "images/IMG_20260620_233429_765.jpg",
+      caption: "My favourite wallpaper, my favourite person. ❤️"
     }
-  ],
-
-  giftImage: "images/gift.jpg",
-
-  giftMessage:
-    "Your presence is enough for me. Happy Birthday, my favourite person. ❤️"
-};
-
-const $ = selector => document.querySelector(selector);
-const $$ = selector => [...document.querySelectorAll(selector)];
-
-const reducedMotion =
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-const wait = ms =>
-  new Promise(resolve => setTimeout(resolve, reducedMotion ? 0 : ms));
-
-
-/* ==========================================
-   GENERAL HELPERS
-   ========================================== */
-
-function showPage(id) {
-  $$(".page").forEach(page => {
-    page.classList.toggle("active", page.id === id);
-  });
-
-  window.scrollTo({
-    top: 0,
-    behavior: reducedMotion ? "auto" : "smooth"
-  });
-}
-
-function burstParticles(element, count = 25) {
-  if (reducedMotion) return Promise.resolve();
-
-  const rect = element.getBoundingClientRect();
-  const x = rect.left + rect.width / 2;
-  const y = rect.top + rect.height / 2;
-  const symbols = ["♥", "✦", "✧", "•"];
-
-  for (let i = 0; i < count; i++) {
-    const particle = document.createElement("span");
-    const angle = Math.random() * Math.PI * 2;
-    const distance = 45 + Math.random() * 145;
-
-    particle.className = "particle";
-    particle.textContent =
-      symbols[Math.floor(Math.random() * symbols.length)];
-
-    particle.style.setProperty("--x", `${x}px`);
-    particle.style.setProperty("--y", `${y}px`);
-    particle.style.setProperty("--dx", `${Math.cos(angle) * distance}px`);
-    particle.style.setProperty("--dy", `${Math.sin(angle) * distance}px`);
-    particle.style.setProperty("--size", `${10 + Math.random() * 17}px`);
-    particle.style.setProperty(
-      "--particle-color",
-      Math.random() > 0.5 ? "#ffc4df" : "#f6d7a4"
-    );
-
-    $("#particles").appendChild(particle);
-    particle.addEventListener("animationend", () => particle.remove());
-  }
-
-  return wait(950);
-}
-
-function setImage(img, placeholder, path) {
-  img.style.display = "block";
-  placeholder.style.display = "none";
-
-  img.onload = () => {
-    img.style.display = "block";
-    placeholder.style.display = "none";
-  };
-
-  img.onerror = () => {
-    img.style.display = "none";
-    placeholder.style.display = "grid";
-  };
-
-  img.src = path;
-}
-
-function restartAnimation(element, className) {
-  element.classList.remove(className);
-  void element.offsetWidth;
-  element.classList.add(className);
-}
-
-
-/* ==========================================
-   PAGE 1 — TWO BROKEN HEARTS
-   ========================================== */
-
-async function startHeartAnimation() {
-  await wait(700);
-
-  $("#heartHint").textContent =
-    "Two different hearts… slowly finding each other.";
-
-  $("#heartScene").classList.add("merging");
-
-  await wait(2100);
-
-  $("#heartScene").classList.remove("merging");
-  $("#heartScene").classList.add("merged");
-
-  $("#heartHint").textContent =
-    "Two hearts. One little story. Now unlock it. ♥";
-
-  await wait(800);
-
-  $("#passwordPanel").classList.remove("hidden");
-}
-
-startHeartAnimation();
-
-
-/* PASSWORD CHECK */
-
-$("#passwordForm").addEventListener("submit", async event => {
-  event.preventDefault();
-
-  const input = $("#passwordInput").value.trim();
-
-  if (input !== CONFIG.password) {
-    $("#passwordMessage").textContent =
-      "Not quite, madam… try our special date. 💗";
-
-    restartAnimation($("#passwordPanel"), "shake");
-    $("#passwordInput").select();
-    return;
-  }
-
-  $("#passwordMessage").textContent =
-    "You unlocked a little piece of our story. ♥";
-
-  $("#heartScene").classList.add("merging");
-
-  await burstParticles($("#heartScene"), 40);
-  await wait(250);
-
-  createMemoryHearts();
-  showPage("page2");
-});
-
-
-/* ==========================================
-   PAGE 2 — SEVEN PHOTO MEMORIES
-   ========================================== */
-
-let openedMemories = new Set();
-let currentMemory = 0;
-let memoryOpen = false;
-
-function createMemoryHearts() {
-  const grid = $("#heartsGrid");
-  grid.innerHTML = "";
-
-  CONFIG.memories.forEach((memory, index) => {
-    const heart = document.createElement("button");
-
-    heart.type = "button";
-    heart.className = "memory-heart";
-    heart.textContent = "♥";
-    heart.dataset.number = index + 1;
-    heart.style.setProperty("--delay", `${index * -0.2}s`);
-    heart.setAttribute("aria-label", `Open memory ${index + 1}`);
-
-    heart.addEventListener("click", () => openMemory(index));
-
-    grid.appendChild(heart);
-  });
-}
-
-function openMemory(index) {
-  if (memoryOpen) return;
-
-  memoryOpen = true;
-  currentMemory = index;
-
-  const memory = CONFIG.memories[index];
-
-  $("#memoryTitle").textContent = memory.title;
-  $("#memoryCaption").textContent = memory.caption;
-
-  setImage(
-    $("#memoryPhoto"),
-    $("#memoryPlaceholder"),
-    memory.image
-  );
-
-  $("#memoryModal").classList.remove("hidden");
-}
-
-function closeMemory() {
-  $("#memoryModal").classList.add("hidden");
-  memoryOpen = false;
-}
-
-$("#closeMemory").addEventListener("click", closeMemory);
-
-$("#memoryModal").addEventListener("click", event => {
-  if (event.target === $("#memoryModal")) {
-    closeMemory();
-  }
-});
-
-document.addEventListener("keydown", event => {
-  if (
-    event.key === "Escape" &&
-    !$("#memoryModal").classList.contains("hidden")
-  ) {
-    closeMemory();
-  }
-});
-
-
-/* KEEP A MEMORY */
-
-$("#keepMemory").addEventListener("click", async () => {
-  openedMemories.add(currentMemory);
-
-  const heart = $$(".memory-heart")[currentMemory];
-
-  if (heart) {
-    heart.classList.add("opened");
-    heart.setAttribute(
-      "aria-label",
-      `Memory ${currentMemory + 1} discovered`
-    );
-  }
-
-  $("#progress").textContent =
-    `${openedMemories.size} / 7 memories discovered`;
-
-  closeMemory();
-
-  await burstParticles($("#heartsGrid"), 16);
-
-  if (openedMemories.size === CONFIG.memories.length) {
-    $("#memoryHint").textContent =
-      "All seven memories are safe in your heart. ❤️";
-
-    $("#continueButton").classList.remove("hidden");
-  } else {
-    const remaining = 7 - openedMemories.size;
-
-    $("#memoryHint").textContent =
-      `${remaining} more ${remaining === 1 ? "memory" : "memories"} waiting for you.`;
-  }
-});
-
-
-/* MOVE TO TEDDY */
-
-$("#continueButton").addEventListener("click", async () => {
-  await burstParticles($("#heartsGrid"), 35);
-
-  showPage("page3");
-
-  const teddy = $("#teddy");
-
-  restartAnimation(teddy, "proposing");
-
-  setTimeout(() => {
-    teddy.classList.remove("proposing");
-  }, 1500);
-});
-
-
-/* ==========================================
-   PAGE 3 — VISHAN'S TEDDY PROPOSAL
-   ========================================== */
-
-let rejectionCount = 0;
-
-const rejectionMessages = [
-  {
-    dialogue: "Aiyoo… once yosichu paarunga madam 🥺❤️",
-    reaction: "Teddy is shocked and hugging its little heart."
-  },
-  {
-    dialogue: "Naan ivlo cute-ah kekkuren… 🥹💗",
-    reaction: "Teddy is getting dramatically emotional now."
-  },
-  {
-    dialogue: "Accept panna ma enna pandringa madam 😤❤️",
-    reaction: "Teddy has entered cute grumpy mode!"
-  }
-];
-
-const teddy = $("#teddy");
-
-
-/* PLAYFUL REJECTION */
-
-$("#noButton").addEventListener("click", async () => {
-  rejectionCount++;
-
-  const message = rejectionMessages[
-    Math.min(rejectionCount - 1, rejectionMessages.length - 1)
   ];
 
-  $("#dialogue").textContent = message.dialogue;
-  $("#reaction").textContent = message.reaction;
+  // Lock later slides until the correct code is entered.
+  slide3.classList.add("locked");
+  slide4.classList.add("locked");
 
-  teddy.classList.remove("proposing", "grumpy", "sad", "happy");
-
-  if (rejectionCount === 1) {
-    teddy.classList.add("sad");
-
-    $("#noButton").textContent = "Still thinking 🙈";
-  } else if (rejectionCount === 2) {
-    teddy.classList.add("sad");
-
-    $("#noButton").textContent = "Hmm… let me think";
-  } else {
-    teddy.classList.add("grumpy");
-
-    $("#yesButton").textContent = "SERI, YES! 💗";
-    $("#noButton").textContent = "Ask me sweetly 🥹";
+  function goToSlide(slide) {
+    slide.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  // Teddy makes a cute little bow before asking again.
-  await wait(500);
+  // Background sparkles
+  const sparkleLayer = $("#sparkles");
+  const sparkleSymbols = ["✦", "✧", "·", "♥"];
 
-  teddy.classList.remove("sad", "grumpy");
-  restartAnimation(teddy, "proposing");
+  for (let i = 0; i < 38; i++) {
+    const sparkle = document.createElement("span");
+    sparkle.className = "sparkle";
+    sparkle.textContent =
+      sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
 
-  setTimeout(() => {
-    teddy.classList.remove("proposing");
-  }, 1400);
-});
+    sparkle.style.left = `${Math.random() * 100}%`;
+    sparkle.style.top = `${Math.random() * 100}%`;
+    sparkle.style.setProperty("--duration", `${4 + Math.random() * 7}s`);
+    sparkle.style.animationDelay = `${Math.random() * -8}s`;
+    sparkle.style.fontSize = `${8 + Math.random() * 15}px`;
 
+    sparkleLayer.appendChild(sparkle);
+  }
 
-/* ACCEPT THE PROPOSAL */
+  // SLIDE 1: hearts meet
+  const heartMeeting = $("#heartMeeting");
+  const meetHeartsBtn = $("#meetHeartsBtn");
+  const toLockBtn = $("#toLockBtn");
+  const heartCaption = $("#heartCaption");
 
-$("#yesButton").addEventListener("click", async () => {
-  $("#proposalButtons").classList.add("hidden");
+  meetHeartsBtn.addEventListener("click", () => {
+    heartMeeting.classList.add("merged");
+    heartCaption.textContent =
+      "Two hearts found each other… and our story began. ❤️";
 
-  $("#dialogue").textContent =
-    "Awww! She said YES! Teddy is the happiest bear ever! 🥹💗";
+    meetHeartsBtn.disabled = true;
+    meetHeartsBtn.textContent = "Our hearts have met ♥";
 
-  $("#reaction").textContent =
-    "Look at him jumping with happiness!";
-
-  teddy.classList.remove("sad", "grumpy", "proposing");
-  restartAnimation(teddy, "happy");
-
-  await burstParticles(teddy, 40);
-  await wait(700);
-
-  $("#giftArea").classList.remove("hidden");
-
-  $("#giftMessage").textContent = CONFIG.giftMessage;
-
-  setImage(
-    $("#giftPhoto"),
-    $("#giftPlaceholder"),
-    CONFIG.giftImage
-  );
-
-  $("#giftArea").scrollIntoView({
-    behavior: reducedMotion ? "auto" : "smooth",
-    block: "start"
+    toLockBtn.hidden = false;
+    toLockBtn.focus();
   });
-});
 
+  toLockBtn.addEventListener("click", () => goToSlide(slide2));
 
-/* ==========================================
-   MAGICAL GIFT BOX
-   ========================================== */
+  // SLIDE 2: exact secret code
+  const unlockForm = $("#unlockForm");
+  const secretCode = $("#secretCode");
+  const codeMessage = $("#codeMessage");
 
-$("#giftBox").addEventListener("click", async () => {
-  const box = $("#giftBox");
+  unlockForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  if (box.classList.contains("open")) return;
+    if (secretCode.value === SECRET_CODE) {
+      codeMessage.textContent = "Unlocked! Your memories are waiting. ❤️";
+      codeMessage.style.color = "#aaffd5";
 
-  box.classList.add("open");
+      // Unlock the next two slides only after the correct code.
+      slide3.classList.remove("locked");
+      slide4.classList.remove("locked");
 
-  await burstParticles(box, 40);
-  await wait(350);
+      window.setTimeout(() => {
+        goToSlide(slide3);
+      }, 650);
+    } else {
+      codeMessage.textContent = "Not quite, my love. Try the correct code. 💗";
+      codeMessage.style.color = "#ff9ec6";
 
-  $("#giftReveal").classList.remove("hidden");
+      secretCode.value = "";
+      secretCode.focus();
 
-  $("#giftReveal").scrollIntoView({
-    behavior: reducedMotion ? "auto" : "smooth",
-    block: "center"
+      secretCode.animate(
+        [
+          { transform: "translateX(0)" },
+          { transform: "translateX(-6px)" },
+          { transform: "translateX(6px)" },
+          { transform: "translateX(0)" }
+        ],
+        { duration: 220 }
+      );
+    }
   });
-});
 
+  // SLIDE 3: reveal photos inside floating heart balloons
+  const balloons = document.querySelectorAll(".photo-balloon");
+  const memoryPaper = $("#memoryPaper");
+  const revealedPhoto = $("#revealedPhoto");
+  const memoryCaption = $("#memoryCaption");
+  const closeMemory = $("#closeMemory");
 
-/* ==========================================
-   RESTART THE EXPERIENCE
-   ========================================== */
+  balloons.forEach((balloon) => {
+    balloon.addEventListener("click", () => {
+      const index = Number(balloon.dataset.photo);
+      const memory = memories[index];
 
-$("#restartButton").addEventListener("click", () => {
-  openedMemories = new Set();
-  currentMemory = 0;
-  memoryOpen = false;
-  rejectionCount = 0;
+      if (!memory) return;
 
-  $("#passwordInput").value = "";
-  $("#passwordMessage").textContent = "";
-  $("#passwordPanel").classList.add("hidden");
+      // Show the photo inside the heart and in the large memory view.
+      balloon.classList.add("revealed");
+      revealedPhoto.src = memory.image;
+      revealedPhoto.alt = memory.caption;
+      memoryCaption.textContent = memory.caption;
+      memoryPaper.hidden = false;
+      document.body.style.overflow = "hidden";
+    });
+  });
 
-  $("#heartScene").classList.remove("merging", "merged");
-  $("#heartHint").textContent = "Watch the hearts find each other…";
+  function hideMemory() {
+    memoryPaper.hidden = true;
+    document.body.style.overflow = "";
+  }
 
-  $("#progress").textContent = "0 / 7 memories discovered";
-  $("#memoryHint").textContent = "Every heart has a story.";
-  $("#continueButton").classList.add("hidden");
+  closeMemory.addEventListener("click", hideMemory);
 
-  $("#giftArea").classList.add("hidden");
-  $("#giftBox").classList.remove("open");
-  $("#giftReveal").classList.add("hidden");
+  memoryPaper.addEventListener("click", (event) => {
+    if (event.target === memoryPaper) hideMemory();
+  });
 
-  $("#proposalButtons").classList.remove("hidden");
-  $("#yesButton").textContent = "YES, OF COURSE! 💗";
-  $("#noButton").textContent = "Let me think 🙈";
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !memoryPaper.hidden) {
+      hideMemory();
+    }
+  });
 
-  $("#dialogue").textContent =
-    "Madam… en kooda forever irupeengala? 🥹❤️";
+  $("#toTeddyBtn").addEventListener("click", () => goToSlide(slide4));
 
-  $("#reaction").textContent = "Teddy is feeling shy…";
+  // SLIDE 4: teddy proposal
+  const teddyStage = $("#teddyStage");
+  const maleTeddy = $("#maleTeddy");
+  const femaleTeddy = $("#femaleTeddy");
+  const teddyMessage = $("#teddyMessage");
+  const pocketRing = $("#pocketRing");
+  const landingHearts = $("#landingHearts");
 
-  teddy.classList.remove("happy", "grumpy", "sad", "proposing");
+  const proposalActions = $("#proposalActions");
+  const answerActions = $("#answerActions");
+  const proposeBtn = $("#proposeBtn");
+  const acceptBtn = $("#acceptBtn");
+  const thinkBtn = $("#thinkBtn");
 
-  createMemoryHearts();
-  showPage("page1");
+  const giftArea = $("#giftArea");
+  const giftBox = $("#giftBox");
+  const giftMessage = $("#giftMessage");
+  const restartBtn = $("#restartBtn");
 
-  startHeartAnimation();
+  let proposalStarted = false;
+  let accepted = false;
+  let giftOpened = false;
+
+  proposeBtn.addEventListener("click", () => {
+    if (proposalStarted) return;
+    proposalStarted = true;
+
+    proposeBtn.disabled = true;
+    teddyMessage.textContent =
+      "Look! Your teddy is jumping down to see you! 🧸";
+
+    maleTeddy.classList.remove("land");
+    void maleTeddy.offsetWidth;
+    maleTeddy.classList.add("land");
+
+    window.setTimeout(() => {
+      landingHearts.classList.add("show");
+      teddyMessage.textContent =
+        "I brought you something small… but my love is enormous. 💗";
+
+      // The ring was hidden in his pocket until the proposal.
+      pocketRing.classList.add("visible");
+      answerActions.hidden = false;
+      proposalActions.hidden = true;
+    }, 1650);
+  });
+
+  thinkBtn.addEventListener("click", () => {
+    teddyMessage.textContent =
+      "I'll wait right here with my little teddy heart. 🥺❤️";
+  });
+
+  acceptBtn.addEventListener("click", () => {
+    if (accepted) return;
+    accepted = true;
+
+    answerActions.hidden = true;
+    pocketRing.classList.remove("visible");
+
+    teddyMessage.textContent =
+      "She said YES! His favourite girl is coming for a hug. 💞";
+
+    // Female teddy approaches slowly from the side.
+    femaleTeddy.classList.remove("walking");
+    void femaleTeddy.offsetWidth;
+    femaleTeddy.classList.add("walking");
+
+    window.setTimeout(() => {
+      teddyStage.classList.add("hugging");
+      teddyMessage.textContent =
+        "A warm teddy hug… and two hearts together. 🧸❤️";
+
+      window.setTimeout(() => {
+        giftArea.hidden = false;
+        giftArea.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }, 1000);
+    }, 2900);
+  });
+
+  // Touch/click the gift to open it.
+  giftBox.addEventListener("click", () => {
+    if (giftOpened) return;
+    giftOpened = true;
+
+    giftBox.classList.add("opened");
+    giftMessage.hidden = false;
+    teddyMessage.textContent =
+      "A little gift from him, made just for you. 🎁❤️";
+  });
+
+  // Replay all four slides from the beginning.
+  restartBtn.addEventListener("click", () => {
+    proposalStarted = false;
+    accepted = false;
+    giftOpened = false;
+
+    heartMeeting.classList.remove("merged");
+    heartCaption.textContent =
+      "Two hearts, slowly finding their way home.";
+    meetHeartsBtn.disabled = false;
+    meetHeartsBtn.innerHTML = 'Let our hearts meet <span>♥</span>';
+    toLockBtn.hidden = true;
+
+    secretCode.value = "";
+    codeMessage.textContent = "";
+
+    balloons.forEach((balloon) => balloon.classList.remove("revealed"));
+    hideMemory();
+
+    maleTeddy.classList.remove("land");
+    femaleTeddy.classList.remove("walking");
+    teddyStage.classList.remove("hugging");
+    pocketRing.classList.remove("visible");
+    landingHearts.classList.remove("show");
+
+    proposalActions.hidden = false;
+    answerActions.hidden = true;
+    giftArea.hidden = true;
+    giftBox.classList.remove("opened");
+    giftMessage.hidden = true;
+
+    proposeBtn.disabled = false;
+    teddyMessage.textContent =
+      "Wait… someone is coming to see you. 🧸";
+
+    slide3.classList.add("locked");
+    slide4.classList.add("locked");
+
+    goToSlide(slide1);
+  });
 });
